@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "pualPTH8Pm0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Davi\\source\\repos\\Aplicativo DashBoard\\Aplicativo DashBoard\\Aplicativo DashBoard.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Davi\\.nuget\\packages\\nmodbus\\3.0.83\\nmodbus.3.0.83.nupkg.sha512"
+  ],
+  "logs": []
+}

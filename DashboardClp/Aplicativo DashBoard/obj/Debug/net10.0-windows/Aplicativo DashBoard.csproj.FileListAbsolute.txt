@@ -1,0 +1,22 @@
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\bin\Debug\net10.0-windows\Aplicativo DashBoard.exe
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\bin\Debug\net10.0-windows\Aplicativo DashBoard.deps.json
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\bin\Debug\net10.0-windows\Aplicativo DashBoard.runtimeconfig.json
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\bin\Debug\net10.0-windows\Aplicativo DashBoard.dll
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\bin\Debug\net10.0-windows\Aplicativo DashBoard.pdb
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard_MarkupCompile.cache
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard.g.resources
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard.AssemblyInfoInputs.cache
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard.AssemblyInfo.cs
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard.csproj.CoreCompileInputs.cache
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard.dll
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\refint\Aplicativo DashBoard.dll
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard.pdb
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard.genruntimeconfig.cache
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\ref\Aplicativo DashBoard.dll
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicati.80C6471E.Up2Date
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\bin\Debug\net10.0-windows\NModbus.dll
+C:\Users\Davi\source\repos\Aplicativo DashBoard\Aplicativo DashBoard\obj\Debug\net10.0-windows\Aplicativo DashBoard.csproj.AssemblyReference.cache

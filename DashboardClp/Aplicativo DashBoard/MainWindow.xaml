@@ -1,0 +1,1077 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="Aplicativo_DashBoard.MainWindow"
+    Title="DAS Dashboard"
+    Width="1200"
+    Height="706"
+    MinWidth="950"
+    MinHeight="650"
+    WindowStartupLocation="CenterScreen"
+    Background="#0B1220"
+    FontFamily="Segoe UI">
+
+    <Window.Resources>
+
+        <!-- LED DE ALARME -->
+        <Style x:Key="TripLedStyle" TargetType="{x:Type Ellipse}">
+            <Setter Property="Width" Value="9"/>
+            <Setter Property="Height" Value="9"/>
+            <Setter Property="Fill" Value="#6B7280"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,7,0"/>
+        </Style>
+
+        <!-- CARTÃO PADRÃO -->
+        <Style x:Key="CardStyle" TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="#111827"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="18"/>
+            <Setter Property="Margin" Value="6"/>
+        </Style>
+
+        <!-- LABEL -->
+        <Style x:Key="MetricLabelStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="#9CA3AF"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!-- VALOR -->
+        <Style x:Key="MetricValueStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,8,0,0"/>
+        </Style>
+
+        <!-- BOTÃO -->
+        <Style x:Key="DashboardButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Height" Value="42"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Margin="22">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- ====================================================== -->
+        <!-- CABEÇALHO -->
+        <!-- ====================================================== -->
+
+        <Border
+            Grid.Row="0"
+            Background="#111827"
+            CornerRadius="12"
+            Padding="16,10,20,10"
+            Margin="0,0,0,10"
+            Height="80"
+            VerticalAlignment="Bottom">
+
+            <DockPanel>
+
+                <!-- STATUS -->
+                <StackPanel
+                    DockPanel.Dock="Right"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center">
+
+                    <Ellipse
+                        x:Name="LedStatus"
+                        Width="10"
+                        Height="10"
+                        Fill="#F59E0B"
+                        Margin="0,0,9,0"/>
+
+                    <TextBlock
+                        x:Name="TxtStatusCabecalho"
+                        Text="Desconectado"
+                        Foreground="#F9FAFB"
+                        FontSize="14"
+                        VerticalAlignment="Center"/>
+
+                </StackPanel>
+
+
+                <!-- TÍTULO -->
+                <StackPanel>
+
+                    <TextBlock
+                        Text="DAS DASHBOARD"
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Bold"/>
+
+                    <TextBlock
+                        Text="Monitoramento do XP300 e do relé Pextron URP6000"
+                        Foreground="#9CA3AF"
+                        FontSize="13"
+                        Margin="0,4,0,0"/>
+
+                </StackPanel>
+
+            </DockPanel>
+
+        </Border>
+
+
+        <!-- ====================================================== -->
+        <!-- ÁREA PRINCIPAL -->
+        <!-- ====================================================== -->
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="262"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+            <!-- ================================================== -->
+            <!-- COMUNICAÇÃO / CONTROLE -->
+            <!-- ================================================== -->
+
+            <Border
+                Grid.Column="0"
+                Style="{StaticResource CardStyle}" Margin="6,6,6,6">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <!-- TÍTULO -->
+                    <StackPanel
+                        Grid.Row="0"
+                        Margin="0,0,0,18">
+
+                        <TextBlock
+                            Text="COMUNICAÇÃO"
+                            Foreground="#60A5FA"
+                            FontSize="13"
+                            FontWeight="Bold"/>
+
+                        <TextBlock
+                            Text="Controlador XP300"
+                            Foreground="White"
+                            FontSize="21"
+                            FontWeight="SemiBold"
+                            Margin="0,5,0,0"/>
+
+                    </StackPanel>
+
+
+                    <!-- IP -->
+                    <StackPanel
+                        Grid.Row="1"
+                        Margin="0,0,0,14">
+
+                        <TextBlock
+                            Text="Endereço IP"
+                            Foreground="#9CA3AF"/>
+
+                        <TextBox
+                            x:Name="TxtIp"
+                            Text="192.168.1.231"
+                            Height="34"
+                            Padding="10,7"
+                            FontSize="14"
+                            Background="#1F2937"
+                            Foreground="White"
+                            BorderBrush="#374151"/>
+
+                    </StackPanel>
+
+
+                    <!-- PORTA -->
+                    <StackPanel
+                        Grid.Row="2"
+                        Margin="0,0,0,18">
+
+                        <TextBlock
+                            Text="Porta TCP"
+                            Foreground="#9CA3AF"
+                            Margin="0,0,0,6"/>
+
+                        <TextBox
+                            x:Name="TxtPorta"
+                            Text="502"
+                            Height="35"
+                            Padding="10,7"
+                            FontSize="14"
+                            Background="#1F2937"
+                            Foreground="White"
+                            BorderBrush="#374151"/>
+
+                    </StackPanel>
+
+
+                    <!-- BOTÕES DE COMUNICAÇÃO -->
+
+                    <Button
+                        x:Name="BtnConectar"
+                        Grid.Row="2"
+                        Content="CONECTAR"
+                        Width="84"
+                        Height="42"
+                        Background="#2563EB"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="BtnConectar_Click"
+                        HorizontalAlignment="Left"
+                        Margin="0,78,0,0"
+                        Grid.RowSpan="2"/>
+
+
+                    <!-- RESET -->
+
+                    <Button
+                        x:Name="BtnResetRele"
+                        Grid.Row="2"
+                        Content="RESET RELÉ"
+                        Width="85"
+                        Height="42"
+                        Background="#555555"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderBrush="#F59E0B"
+                        BorderThickness="1"
+                        Cursor="Hand"
+                        Click="BtnResetRele_Click"
+                        IsEnabled="False"
+                        HorizontalAlignment="Left"
+                        Margin="121,78,0,0"
+                        Grid.RowSpan="2"/>
+
+
+                    <!-- STATUS DA CONEXÃO -->
+
+                    <Border
+                        Grid.Row="4"
+                        Background="#1F2937"
+                        CornerRadius="8"
+                        Padding="12"
+                        Margin="0,20,0,0"
+                        VerticalAlignment="Top">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Estado da conexão"
+                                Foreground="#9CA3AF"
+                                FontSize="12"/>
+
+                            <TextBlock
+                                x:Name="TxtStatusConexao"
+                                Text="Aguardando conexão"
+                                Foreground="#FBBF24"
+                                FontSize="15"
+                                FontWeight="SemiBold"
+                                Margin="0,5,0,0"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ================================================== -->
+            <!-- MEDIÇÕES DO URP6000 -->
+            <!-- ================================================== -->
+
+            <StackPanel Grid.Column="1" Margin="0,0,300,0">
+
+                <TextBlock
+                    Text="MEDIÇÕES DO RELÉ"
+                    Foreground="#60A5FA"
+                    FontSize="10"
+                    FontWeight="Bold"
+                    Margin="2,0,0,2"/>
+
+                <TextBlock Text="PROTEÇÕES"
+           Foreground="#60A5FA"
+           FontSize="10"
+           FontWeight="Bold"
+           Margin="6,0,0,6"/>
+
+                <Grid Margin="6,0,0,10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- ===================================================== -->
+                    <!-- COLUNA 1 - 27 -->
+                    <!-- ===================================================== -->
+
+                    <StackPanel Grid.Column="0">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip27A"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip27A"
+                       Text="27A"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip27B"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip27B"
+                       Text="27B"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="LedTrip27C"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip27C"
+                       Text="27C"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <!-- ===================================================== -->
+                    <!-- COLUNA 2 - 32 -->
+                    <!-- ===================================================== -->
+
+                    <StackPanel Grid.Column="1">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip32A"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip32A"
+                       Text="32A"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip32B"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip32B"
+                       Text="32B"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="LedTrip32C"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip32C"
+                       Text="32C"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <!-- ===================================================== -->
+                    <!-- COLUNA 3 - 37 -->
+                    <!-- ===================================================== -->
+
+                    <StackPanel Grid.Column="2">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip37A"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip37A"
+                       Text="37A"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip37B"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip37B"
+                       Text="37B"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="LedTrip37C"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip37C"
+                       Text="37C"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <!-- ===================================================== -->
+                    <!-- COLUNA 4 - 50 -->
+                    <!-- ===================================================== -->
+
+                    <StackPanel Grid.Column="3">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip50A"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip50A"
+                       Text="50A"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip50B"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip50B"
+                       Text="50B"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip50C"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip50C"
+                       Text="50C"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="LedTrip50N"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip50N"
+                       Text="50N"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <!-- ===================================================== -->
+                    <!-- COLUNA 5 - 51 -->
+                    <!-- ===================================================== -->
+
+                    <StackPanel Grid.Column="4">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip51A"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip51A"
+                       Text="51A"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip51B"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip51B"
+                       Text="51B"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip51C"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip51C"
+                       Text="51C"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="LedTrip51N"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip51N"
+                       Text="51N"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <!-- ===================================================== -->
+                    <!-- COLUNA 6 - 59 -->
+                    <!-- ===================================================== -->
+
+                    <StackPanel Grid.Column="5">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip59A"
+                 Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip59A"
+                   Text="59A"
+                   Foreground="#9CA3AF"
+                   FontSize="12"
+                   VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip59B"
+                 Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip59B"
+                   Text="59B"
+                   Foreground="#9CA3AF"
+                   FontSize="12"
+                   VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip59C"
+                 Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip59C"
+                   Text="59C"
+                   Foreground="#9CA3AF"
+                   FontSize="12"
+                   VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="LedTrip59N"
+                 Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip59N"
+                   Text="59N"
+                   Foreground="#9CA3AF"
+                   FontSize="12"
+                   VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <!-- ===================================================== -->
+                    <!-- COLUNA 6 - 67 -->
+                    <!-- ===================================================== -->
+
+                    <StackPanel Grid.Column="6">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip67A"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip67A"
+                       Text="67A"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip67B"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip67B"
+                       Text="67B"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip67C"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip67C"
+                       Text="67C"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="LedTrip67N"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip67N"
+                       Text="67N"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <!-- ===================================================== -->
+                    <!-- COLUNA 7 - 47 / 78 / 81 / 86 -->
+                    <!-- ===================================================== -->
+
+                    <StackPanel Grid.Column="7">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip47"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip47"
+                       Text="47"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip78"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip78"
+                       Text="78"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTrip81"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip81"
+                       Text="81"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="LedTrip86"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTrip86"
+                       Text="86"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <!-- ===================================================== -->
+                    <!-- COLUNA 8 - Q / GS -->
+                    <!-- ===================================================== -->
+
+                    <StackPanel Grid.Column="8">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <Ellipse x:Name="LedTripQ"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTripQ"
+                       Text="Q"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="LedTripGS"
+                     Style="{StaticResource TripLedStyle}"/>
+                            <TextBlock x:Name="TxtTripGS"
+                       Text="GS"
+                       Foreground="#9CA3AF"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Grid>
+
+                <!-- ================================================== -->
+                <!-- CORRENTES -->
+                <!-- ================================================== -->
+
+                <TextBlock
+                    Text="Correntes"
+                    Foreground="White"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Margin="0,10,0,0" 
+                    Width="500"/>
+                <UniformGrid Columns="3" Width="500">
+
+                    <!-- CORRENTE FASE A -->
+
+                    <Border
+                        Style="{StaticResource CardStyle}"
+                        Height="60"
+                        Padding="18,10,18,10" Width="160" Margin="0,0,0,0">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Fase A"
+                                Style="{StaticResource MetricLabelStyle}"
+                                Height="18" FontSize="12"/>
+                            <TextBlock
+                                x:Name="TxtCorrenteFaseA"
+                                Text="-- A"
+                                Style="{StaticResource MetricValueStyle}"
+                                Height="30" FontSize="20" Margin="0,0,0,0"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <Border
+                        Style="{StaticResource CardStyle}"
+                        Height="60"
+                        Padding="18,10,18,10" Width="160" Margin="0,6,0,0">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Fase B"
+                                Style="{StaticResource MetricLabelStyle}"
+                                Height="18" FontSize="12"/>
+                            <TextBlock
+                                x:Name="TxtCorrenteFaseB"
+                                Text="-- A"
+                                Style="{StaticResource MetricValueStyle}"
+                                Height="30" Margin="0,0,0,0" Width="200" FontSize="20"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!-- CORRENTE FASE C -->
+
+                    <Border
+                        Style="{StaticResource CardStyle}"
+                        Height="60"
+                        Padding="18,10,18,10" Margin="0,0,0,0" Width="160">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Fase C"
+                                Style="{StaticResource MetricLabelStyle}"
+                                Height="18"/>
+
+                            <TextBlock
+                                x:Name="TxtCorrenteFaseC"
+                                Text="-- A"
+                                Style="{StaticResource MetricValueStyle}"
+                                Height="30" Margin="0,0,0,0" FontSize="20"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+                </UniformGrid>
+
+
+                <!-- ================================================== -->
+                <!-- TENSÕES -->
+                <!-- ================================================== -->
+
+                <TextBlock
+                    Text="Tensões"
+                    Foreground="White"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Margin="0,10,0,0" 
+                    Width="500"/>
+
+                <UniformGrid Columns="3" Width="500">
+
+                    <!-- TENSÃO FASE A -->
+
+                    <Border
+                        Style="{StaticResource CardStyle}"
+                        Height="60"
+                        Padding="18,10,18,10" Width="160" Margin="0,0,0,0">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Fase A"
+                                Style="{StaticResource MetricLabelStyle}" FontSize="12"/>
+
+                            <TextBlock
+                                x:Name="TxtTensaoFaseA"
+                                Text="-- V"
+                                Style="{StaticResource MetricValueStyle}" Margin="0,0,0,0" FontSize="20"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!-- TENSÃO FASE B -->
+
+                    <Border
+                        Style="{StaticResource CardStyle}"
+                        Height="60"
+                        Padding="18,10,18,10" Width="160" Margin="0,0,0,0">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Fase B"
+                                Style="{StaticResource MetricLabelStyle}" FontSize="12"/>
+
+                            <TextBlock
+                                x:Name="TxtTensaoFaseB"
+                                Text="-- V"
+                                Style="{StaticResource MetricValueStyle}" FontSize="20" Margin="0,0,0,0"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!-- TENSÃO FASE C -->
+
+                    <Border
+                        Style="{StaticResource CardStyle}"
+                        Height="60"
+                        Padding="18,10,18,10" Width="160" Margin="0,0,0,0">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Fase C"
+                                Style="{StaticResource MetricLabelStyle}" FontSize="12"/>
+
+                            <TextBlock
+                                x:Name="TxtTensaoFaseC"
+                                Text="-- V"
+                                Style="{StaticResource MetricValueStyle}" Margin="0,0,0,0" FontSize="20"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+                </UniformGrid>
+
+
+                <!-- ================================================== -->
+                <!-- POTÊNCIA -->
+                <!-- ================================================== -->
+
+                <TextBlock
+                    Text="Potência (KW)"
+                    Foreground="White"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Margin="0,10,0,0" 
+                    Width="500"/>
+                <UniformGrid Columns="3">
+
+                    <!-- POTÊNCIA FASE A -->
+
+                    <Border
+                        Style="{StaticResource CardStyle}"
+                        Height="60"
+                        Padding="18,10,18,10" Width="160" Margin="0,0,0,0">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Ativa A"
+                                Style="{StaticResource MetricLabelStyle}" FontSize="12"/>
+
+                            <TextBlock
+                                x:Name="TxtPotenciaAtivaA"
+                                Text="-- MW"
+                                Style="{StaticResource MetricValueStyle}" Margin="0,0,0,0" FontSize="20"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!-- POTÊNCIA FASE B -->
+
+                    <Border
+                        Style="{StaticResource CardStyle}"
+                        Height="60"
+                        Padding="18,10,18,10" Width="160" Margin="0,0,0,0">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Ativa B"
+                                Style="{StaticResource MetricLabelStyle}" FontSize="12"/>
+
+                            <TextBlock
+                                x:Name="TxtPotenciaAtivaB"
+                                Text="-- MW"
+                                Style="{StaticResource MetricValueStyle}" Margin="0,0,0,0" FontSize="20"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!-- POTÊNCIA FASE C -->
+
+                    <Border
+                        Style="{StaticResource CardStyle}"
+                        Height="60"
+                        Padding="18,10,18,10" Width="160" Margin="0,0,0,0">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                Text="Ativa C"
+                                Style="{StaticResource MetricLabelStyle}" FontSize="12"/>
+
+                            <TextBlock
+                                x:Name="TxtPotenciaAtivaC"
+                                Text="-- MW"
+                                Style="{StaticResource MetricValueStyle}" Margin="0,0,0,0" FontSize="20"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+                </UniformGrid>
+
+
+                <!-- FATOR DE POTÊNCIA -->
+                <StackPanel Grid.Row="6"
+            Grid.Column="1"
+            Margin="0,12,0,8">
+
+                    <TextBlock Text="Fator de Potência"
+               FontSize="18"
+               FontWeight="Bold"
+               Foreground="White"
+               Margin="0,0,0,8"/>
+
+                    <UniformGrid Columns="3">
+
+                        <!-- Fase A -->
+                        <Border Background="#111827"
+                CornerRadius="10"
+                Padding="18,10,18,10" Width="160" Height="60">
+                            <StackPanel>
+                                <TextBlock Text="Fase A"
+                           Foreground="#9CA3AF"
+                           FontSize="12"/>
+                                <TextBox x:Name="TxtFatorPotenciaA"
+                         Text="0,000"
+                         IsReadOnly="True"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Foreground="White"
+                         FontSize="18"
+                         FontWeight="Bold"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Fase B -->
+                        <Border Background="#111827"
+                CornerRadius="10"
+                Padding="18,10,18,10"
+                Margin="4" Width="160" Height="60">
+                            <StackPanel>
+                                <TextBlock Text="Fase B"
+                           Foreground="#9CA3AF"
+                           FontSize="12"/>
+                                <TextBox x:Name="TxtFatorPotenciaB"
+                         Text="0,000"
+                         IsReadOnly="True"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Foreground="White"
+                         FontSize="20"
+                         FontWeight="Bold"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Fase C -->
+                        <Border Background="#111827"
+                CornerRadius="10"
+                Padding="18,10,18,10"
+                Margin="4" Width="160" Height="60">
+                            <StackPanel>
+                                <TextBlock Text="Fase C"
+                           Foreground="#9CA3AF"
+                           FontSize="12"/>
+                                <TextBox x:Name="TxtFatorPotenciaC"
+                         Text="0,000"
+                         IsReadOnly="True"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Foreground="White"
+                         FontSize="20"
+                         FontWeight="Bold"/>
+                            </StackPanel>
+                        </Border>
+
+                    </UniformGrid>
+                </StackPanel>
+
+
+            </StackPanel>
+
+        </Grid>
+
+
+        <!-- ====================================================== -->
+        <!-- RODAPÉ -->
+        <!-- ====================================================== -->
+
+        <TextBlock
+            Grid.Row="2"
+            Text="DAS Dashboard  |  Monitoramento via Modbus TCP"
+            Foreground="#6B7280"
+            FontSize="12"
+            HorizontalAlignment="Right"
+            Margin="0,14,4,0"/>
+
+    </Grid>
+
+</Window>
